@@ -13,6 +13,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>reece-dtos-library</name>
 	<description>Shared library for DTOs</description>
+
+	<distributionManagement>
+		<repository>
+			<id>reece-dtos-library</id>
+			<name>Reece DTOs Library</name>
+			<url>https://github.com/angelhdz12/reece-dtos-library.git</url>
+		</repository>
+	</distributionManagement>
+
+
 	<url/>
 	<licenses>
 		<license/>
