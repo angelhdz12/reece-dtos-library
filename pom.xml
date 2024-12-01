@@ -15,12 +15,36 @@
 	<description>Shared library for DTOs</description>
 
 	<distributionManagement>
+		<snapshotRepository>
+			<id>github</id>
+			<name>GitHub Packages Snapshots</name>
+			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
+		</snapshotRepository>
 		<repository>
-			<id>reece-dtos-library</id>
-			<name>Reece DTOs Library</name>
-			<url>https://github.com/angelhdz12/reece-dtos-library.git</url>
+			<id>github</id>
+			<name>GitHub Packages Releases</name>
+			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
 		</repository>
 	</distributionManagement>
+
+	<scm>
+		<connection>scm:git:git://github.com/angelhdz12/reece-dtos-library.git</connection>
+		<developerConnection>scm:git:ssh://github.com/angelhdz12/reece-dtos-library.git</developerConnection>
+		<url>https://github.com/angelhdz12/reece-dtos-library</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<profiles>
+		<profile>
+			<id>snapshot</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<maven.deploy.skip>false</maven.deploy.skip>
+			</properties>
+		</profile>
+	</profiles>
 
 
 	<url/>
