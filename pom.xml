@@ -17,7 +17,7 @@
 	<distributionManagement>
 		<repository>
 			<id>github</id>
-			<name>GitHub Packages Releases</name>
+			<name>GitHub Packages</name>
 			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
 		</repository>
 		<snapshotRepository>
@@ -36,61 +36,20 @@
 
 	<profiles>
 		<profile>
-			<id>dev</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<artifact.version.suffix>-DEV</artifact.version.suffix>
-			</properties>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>dev-repo</id>
-					<name>Development Repository</name>
-					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-dev</url>
-				</snapshotRepository>
-			</distributionManagement>
-		</profile>
-		<profile>
-			<id>test</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<artifact.version.suffix>-TEST</artifact.version.suffix>
-			</properties>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>test-repo</id>
-					<name>Test Repository</name>
-					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-test</url>
-				</snapshotRepository>
-			</distributionManagement>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<artifact.version.suffix>-PROD</artifact.version.suffix>
-			</properties>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>prod-repo</id>
-					<name>Prod Repository</name>
-					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-prod</url>
-				</snapshotRepository>
-			</distributionManagement>
-		</profile>
-		<profile>
 			<id>release</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
-				<maven.deploy.skip>false</maven.deploy.skip>
+				<artifact.version.suffix>-RELEASE</artifact.version.suffix>
 			</properties>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>main-repo</id>
+					<name>Main Repository</name>
+					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-main</url>
+				</snapshotRepository>
+			</distributionManagement>
 		</profile>
 	</profiles>
 
