@@ -31,7 +31,7 @@
 
 	<profiles>
 		<profile>
-			<id>snapshot</id>
+			<id>release</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
