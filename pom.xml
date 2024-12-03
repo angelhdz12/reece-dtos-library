@@ -10,21 +10,21 @@
 	</parent>
 	<groupId>com.reece</groupId>
 	<artifactId>reece-dtos-library</artifactId>
-	<version>0.0.1-RELEASE</version>
+	<version>1.0.0${artifact.version.suffix}</version>
 	<name>reece-dtos-library</name>
 	<description>Shared library for DTOs</description>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>github</id>
-			<name>GitHub Packages Snapshots</name>
-			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
-		</snapshotRepository>
 		<repository>
 			<id>github</id>
 			<name>GitHub Packages Releases</name>
 			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
 		</repository>
+		<snapshotRepository>
+			<id>github</id>
+			<name>GitHub Packages Snapshots</name>
+			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<scm>
@@ -36,13 +36,20 @@
 
 	<profiles>
 		<profile>
-			<id>snapshot</id>
+			<id>dev</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
-				<maven.deploy.skip>false</maven.deploy.skip>
+				<artifact.version.suffix>-DEV</artifact.version.suffix>
 			</properties>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>dev-repo</id>
+					<name>Development Repository</name>
+					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-dev</url>
+				</snapshotRepository>
+			</distributionManagement>
 		</profile>
 		<profile>
 			<id>release</id>
