@@ -44,6 +44,15 @@
 				<maven.deploy.skip>false</maven.deploy.skip>
 			</properties>
 		</profile>
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<maven.deploy.skip>false</maven.deploy.skip>
+			</properties>
+		</profile>
 	</profiles>
 
 
