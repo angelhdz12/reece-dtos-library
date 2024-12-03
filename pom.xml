@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.reece</groupId>
 	<artifactId>reece-dtos-library</artifactId>
-	<version>1.1.1-SNAPSHOT</version>
+	<version>0.0.1-RELEASE</version>
 	<name>reece-dtos-library</name>
 	<description>Shared library for DTOs</description>
 
