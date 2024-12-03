@@ -52,6 +52,38 @@
 			</distributionManagement>
 		</profile>
 		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<artifact.version.suffix>-TEST</artifact.version.suffix>
+			</properties>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>test-repo</id>
+					<name>Test Repository</name>
+					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-test</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<artifact.version.suffix>-PROD</artifact.version.suffix>
+			</properties>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>prod-repo</id>
+					<name>Prod Repository</name>
+					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-prod</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
+		<profile>
 			<id>release</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
