@@ -15,11 +15,6 @@
 	<description>Shared library for DTOs</description>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>github</id>
-			<name>GitHub Packages Snapshots</name>
-			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
-		</snapshotRepository>
 		<repository>
 			<id>github</id>
 			<name>GitHub Packages Releases</name>
