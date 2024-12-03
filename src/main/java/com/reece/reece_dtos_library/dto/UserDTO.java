@@ -10,6 +10,8 @@ public class UserDTO {
 
     private String cellPhone;
 
+    private String city;
+
     public UserDTO(String name, String email, String phone, String cellPhone) {
         this.name = name;
         this.email = email;
