@@ -8,10 +8,13 @@ public class UserDTO {
 
     private String phone;
 
-    public UserDTO(String name, String email, String phone) {
+    private String cellPhone;
+
+    public UserDTO(String name, String email, String phone, String cellPhone) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.cellPhone = cellPhone
     }
 
     public String getName() {
@@ -36,5 +39,13 @@ public class UserDTO {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getCellPhone() {
+        return cellPhone;
+    }
+
+    public void setCellPhone(String cellPhone) {
+        this.cellPhone = cellPhone;
     }
 }
