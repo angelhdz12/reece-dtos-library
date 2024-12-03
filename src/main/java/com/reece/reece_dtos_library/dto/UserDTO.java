@@ -14,7 +14,7 @@ public class UserDTO {
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.cellPhone = cellPhone
+        this.cellPhone = cellPhone;
     }
 
     public String getName() {
