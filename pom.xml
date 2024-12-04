@@ -20,11 +20,6 @@
 			<name>GitHub Packages</name>
 			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
 		</repository>
-		<snapshotRepository>
-			<id>github</id>
-			<name>GitHub Packages Snapshots</name>
-			<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library</url>
-		</snapshotRepository>
 	</distributionManagement>
 
 	<scm>
@@ -36,7 +31,7 @@
 
 	<profiles>
 		<profile>
-			<id>release</id>
+			<id>main</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
