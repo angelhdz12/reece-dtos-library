@@ -35,13 +35,10 @@ jobs:
                     <server>
                       <id>github</id>
                       <username>${GITHUB_ACTOR}</username>
-                      <password>${{ secrets.GITHUB_TOKEN }}</password>
+                      <password>${{ secrets.GITHUB_TOKEN }}
                     </server>
                   </servers>
                 </settings>" > ~/.m2/settings.xml
-
-      - name: Verify Maven settings.xml
-        run: cat ~/.m2/settings.xml
 
       - name: Publish release (main)
         if: github.ref_name == 'main'
