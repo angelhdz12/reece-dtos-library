@@ -10,11 +10,14 @@ public class UserDTO {
 
     private String cellPhone;
 
-    UserDTO(String name, String email, String phone, String cellPhone) {
+    private Integer age;
+
+    UserDTO(String name, String email, String phone, String cellPhone, Integer age) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.cellPhone = cellPhone;
+        this.age = age;
     }
 
     public String getName() {
@@ -47,5 +50,13 @@ public class UserDTO {
 
     public void setCellPhone(String cellPhone) {
         this.cellPhone = cellPhone;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
