@@ -48,7 +48,7 @@ jobs:
           if [ "${{ github.ref_name }}" == "dev" ]; then
             echo "Push detected on 'dev' branch. Deploying with '-DEV' suffix."
             mvn clean deploy -Pdev
-          elif [ "${{ github.event_name }}" == "pull_request" ] && [ "${{ github.base_ref }}" == "main" ]; then
+          elif [ "${{ github.event_name }}" == "pull_request" ] && [ "${{ github.ref_name }}" == "main" ]; then
             echo "Pull request merged into 'main'. Deploying with '-RELEASE' suffix."
             mvn clean deploy -Pmain
           else
