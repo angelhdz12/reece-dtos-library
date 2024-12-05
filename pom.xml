@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.reece</groupId>
 	<artifactId>reece-dtos-library</artifactId>
-	<version>3.0.2${artifact.version.suffix}</version>
+	<version>0.1.0${artifact.version.suffix}</version>
 	<name>reece-dtos-library</name>
 	<description>Shared library for DTOs</description>
 
@@ -42,6 +42,22 @@
 				<snapshotRepository>
 					<id>main-repo</id>
 					<name>Main Repository</name>
+					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-main</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<artifact.version.suffix>-DEV</artifact.version.suffix>
+			</properties>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>dev-repo</id>
+					<name>Dev Repository</name>
 					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-main</url>
 				</snapshotRepository>
 			</distributionManagement>

@@ -3,10 +3,11 @@ name: Publish to GitHub Packages
 on:
   push:
     branches:
+      - dev
       - main
 
 jobs:
-  publish:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -43,4 +44,8 @@ jobs:
       - name: Publish release (main)
         if: github.ref_name == 'main'
         run: |
+          if [ "${{ github.ref_name }}" == "dev"; then
+            mvn clean deploy -Pdev
+          elseif [ "${{ github.ref_name }}" == "main" ]; then
+            mvn clean deploy -Pmain
           mvn clean deploy -Pmain
