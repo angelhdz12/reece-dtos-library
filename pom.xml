@@ -58,7 +58,7 @@
 				<snapshotRepository>
 					<id>dev-repo</id>
 					<name>Dev Repository</name>
-					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-main</url>
+					<url>https://maven.pkg.github.com/angelhdz12/reece-dtos-library-dev</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
