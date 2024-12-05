@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - dev
+  pull_request:
+    branches:
       - main
 
 jobs:
@@ -42,13 +44,13 @@ jobs:
                 </settings>" > ~/.m2/settings.xml
 
       - name: Deploy package for DEV
-        if: github.ref_name == 'refs/heads/dev' && github.event_name == 'push'
+        if: github.ref_name == 'dev' && github.event_name == 'push'
         run: |
           echo "Push detected on 'dev' branch. Deploying with '-DEV' suffix."
           mvn clean deploy -Pdev
 
       - name: Deploy package for RELEASE
-        if: github.ref_name == 'refs/heads/main' && github.event_name == 'push'
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
         run: |
-          echo "Merge detected into 'main'. Deploying with '-RELEASE' suffix."
+          echo "Pull request merged into 'main'. Deploying with '-RELEASE' suffix."
           mvn clean deploy -Pmain
