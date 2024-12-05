@@ -43,14 +43,14 @@ jobs:
                   </servers>
                 </settings>" > ~/.m2/settings.xml
 
-      - name: Publish package
+      - name: Deploy package for DEV
+        if: github.ref_name == 'dev' && github.event_name == 'push'
         run: |
-          if [ "${{ github.ref_name }}" == "dev" ]; then
-            echo "Push detected on 'dev' branch. Deploying with '-DEV' suffix."
-            mvn clean deploy -Pdev
-          elif [ "${{ github.event_name }}" == "pull_request" ] && [ "${{ github.ref_name }}" == "main" ]; then
-            echo "Pull request merged into 'main'. Deploying with '-RELEASE' suffix."
-            mvn clean deploy -Pmain
-          else
-            echo "No matching conditions for deployment."
-          fi
+          echo "Push detected on 'dev' branch. Deploying with '-DEV' suffix."
+          mvn clean deploy -Pdev
+
+      - name: Deploy package for RELEASE
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        run: |
+          echo "Pull request merged into 'main'. Deploying with '-RELEASE' suffix."
+          mvn clean deploy -Pmain
