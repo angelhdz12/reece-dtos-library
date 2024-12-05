@@ -48,4 +48,4 @@ jobs:
             mvn clean deploy -Pdev
           elseif [ "${{ github.ref_name }}" == "main" ]; then
             mvn clean deploy -Pmain
-          mvn clean deploy -Pmain
+          fi
