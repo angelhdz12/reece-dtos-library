@@ -1,17 +1,14 @@
-name: Create Package
+name: Publish to GitHub Packages
 
 on:
-  workflow_run:
-    workflows:
-      - Verify Build
-    types:
-      - completed
+  push:
+    branches:
+      - dev
+      - main
 
 jobs:
-  create-package:
+  deploy:
     runs-on: ubuntu-latest
-
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout code
@@ -23,6 +20,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Run Maven tests
+        run: mvn clean verify
+
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
@@ -30,7 +30,6 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-
       - name: Configure Maven for GitHub Packages
         run: |
           mkdir -p ~/.m2
@@ -43,15 +42,13 @@ jobs:
                     </server>
                   </servers>
                 </settings>" > ~/.m2/settings.xml
-
       - name: Deploy package for DEV
-        if: ${{ github.event.workflow_run.head_branch == 'dev' }}
+        if: github.ref_name == 'dev' && github.event_name == 'push'
         run: |
           echo "Push detected on 'dev' branch. Deploying with '-DEV' suffix."
           mvn clean deploy -Pdev
-
       - name: Deploy package for RELEASE
-        if: ${{ github.event.workflow_run.head_branch == 'main' }}
+        if: github.ref_name == 'main' && github.event_name == 'push'
         run: |
-          echo "Push detected on 'main' branch. Deploying with '-RELEASE' suffix."
+          echo "Pull request merged into 'main'. Deploying with '-RELEASE' suffix."
           mvn clean deploy -Pmain
