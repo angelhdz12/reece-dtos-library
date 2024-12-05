@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - dev
+  pull_request:
+    branches:
       - main
 
 jobs:
@@ -41,11 +43,14 @@ jobs:
                   </servers>
                 </settings>" > ~/.m2/settings.xml
 
-      - name: Publish release (main)
-        if: github.ref_name == 'main'
+      - name: Publish package
         run: |
-          if [[ "${GITHUB_REF_NAME}" == "dev" ]]; then
+          if [ "${{ github.ref_name }}" == "dev" ]; then
+            echo "Push detected on 'dev' branch. Deploying with '-DEV' suffix."
             mvn clean deploy -Pdev
-          elif [[ "${GITHUB_REF_NAME}" == "main" ]]; then
-            mvn clean deploy -Pmain
+          elif [ "${{ github.event_name }}" == "pull_request" ] && [ "${{ github.base_ref }}" == "main" ]; then
+            echo "Pull request merged into 'main'. Deploying with '-RELEASE' suffix."
+            mvn clean deploy -Prelease
+          else
+            echo "No matching conditions for deployment."
           fi
