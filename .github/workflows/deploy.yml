@@ -30,7 +30,6 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-
       - name: Configure Maven for GitHub Packages
         run: |
           mkdir -p ~/.m2
@@ -43,13 +42,11 @@ jobs:
                     </server>
                   </servers>
                 </settings>" > ~/.m2/settings.xml
-
       - name: Deploy package for DEV
         if: github.ref_name == 'dev' && github.event_name == 'push'
         run: |
           echo "Push detected on 'dev' branch. Deploying with '-DEV' suffix."
           mvn clean deploy -Pdev
-
       - name: Deploy package for RELEASE
         if: github.ref_name == 'main' && github.event_name == 'push'
         run: |
