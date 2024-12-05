@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - dev
-  pull_request:
-    branches:
       - main
 
 jobs:
@@ -53,7 +51,7 @@ jobs:
           mvn clean deploy -Pdev
 
       - name: Deploy package for RELEASE
-        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        if: github.ref_name == 'main' && github.event_name == 'push'
         run: |
           echo "Pull request merged into 'main'. Deploying with '-RELEASE' suffix."
           mvn clean deploy -Pmain
